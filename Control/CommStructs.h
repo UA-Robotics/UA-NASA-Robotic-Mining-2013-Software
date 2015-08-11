@@ -6,18 +6,18 @@
 //data to be sent to the robot for control purposes
 struct ControlData
 {
-  int leftMotorSpeed;
-  int rightMotorSpeed;
-  int actuatorSpeed;
-  int stateControl;
+    int leftMotorSpeed;
+    int rightMotorSpeed;
+    int actuatorSpeed;
+    int stateControl;
 };
 
 //data storing current state of the robot
 struct StateData
 {
-  int errorState;
-  int controlState;
-  int power;
+    int errorState;
+    int controlState;
+    int power;
 };
 
 //Several declarations
@@ -36,25 +36,25 @@ static StateData state;  //get the state data from the robot
 
 void initializeCommunicaton()
 {
-   Serial1.begin(38400);
-   
-   controlET.begin(details(control), &Serial1);
-   //communicationBoardOut.begin(details(state), &Serial1);
+    Serial1.begin(38400);
+
+    controlET.begin(details(control), &Serial1);
+    //communicationBoardOut.begin(details(state), &Serial1);
 }
 
 static void updateData()
 {
-  control.leftMotorSpeed = leftMotorSpeed;
-  control.rightMotorSpeed = rightMotorSpeed;
-  control.actuatorSpeed = actuatorSpeed;
-  control.stateControl = stateControl;
+    control.leftMotorSpeed = leftMotorSpeed;
+    control.rightMotorSpeed = rightMotorSpeed;
+    control.actuatorSpeed = actuatorSpeed;
+    control.stateControl = stateControl;
 }
 
 void updateCommunication()
 {
-  updateData();
-  //communicationBoardOut.receiveData();
-  controlET.sendData();
+    updateData();
+    //communicationBoardOut.receiveData();
+    controlET.sendData();
 }
 
 #endif

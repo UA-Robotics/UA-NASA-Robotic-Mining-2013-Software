@@ -13,19 +13,19 @@
 
 void setup()
 {
-  initializeCommunicaton();
-  initializeDebug();
-  initializeLeds();
-  initializeLed();
-  initializeSensors();
+    initializeCommunicaton();
+    initializeDebug();
+    initializeLeds();
+    initializeLed();
+    initializeSensors();
 }
 
 
 void loop()
 {
-  updateCommunication();
-  updateDebug();
-  updateLeds();
-  updateLed();
-  updateSensors();
+    updateCommunication();
+    updateDebug();
+    updateLeds();
+    updateLed();
+    updateSensors();
 }

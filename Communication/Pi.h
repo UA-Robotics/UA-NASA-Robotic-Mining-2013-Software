@@ -3,23 +3,23 @@
 
 struct PiControl
 {
-  
+
 };
 
 struct PiData
 {
-  
-  
+
+
 };
 
 void initializePi()
 {
-  
+
 }
 
 void updatePi()
 {
-  
+
 }
 
 #endif

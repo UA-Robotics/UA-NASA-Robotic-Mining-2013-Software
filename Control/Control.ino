@@ -9,22 +9,22 @@
 #include "CommStructs.h"
 #include "PinMap.h"
 #include "Debug.h"
-#include "Screen.h" 
+#include "Screen.h"
 #include <avr/pgmspace.h>
 
 void setup()
 {
-  //initalize the communication
-  initializeCommunicaton();
-  initializePins();
-  //initializeScreen();
-  initializeDebug();
+    //initalize the communication
+    initializeCommunicaton();
+    initializePins();
+    //initializeScreen();
+    initializeDebug();
 }
 
 void loop()
 {
-  updateControls();
-  updateCommunication();
-  //updateScreen();
-  updateDebug();
+    updateControls();
+    updateCommunication();
+    //updateScreen();
+    updateDebug();
 }

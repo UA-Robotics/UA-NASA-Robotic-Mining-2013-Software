@@ -6,9 +6,9 @@
 //data storing the motor data
 struct MotorData
 {
-  int leftMotorSpeed;
-  int rightMotorSpeed;
-  int actuatorSpeed;
+    int leftMotorSpeed;
+    int rightMotorSpeed;
+    int actuatorSpeed;
 };
 
 static MotorData motor;
@@ -21,58 +21,58 @@ EasyTransfer communicationBoardIn;
 
 void initializeCommunication()
 {
-  Serial.begin(9600);
-  
-  communicationBoardIn.begin(details(motor), &Serial);
+    Serial.begin(9600);
+
+    communicationBoardIn.begin(details(motor), &Serial);
 }
 
 static boolean communicationSafety(boolean state)
 {
-  static boolean storedState = false;
-  static unsigned long previous = 0;
-  static unsigned long current = 0;
-  
-  current = millis();
-  
-  if(current - previous > 1000)
-  {
-    storedState = false;
-  }
-  
-  if(state)
-  {
-    previous = current;
-    storedState = true;
-  }
-  
-  return storedState;
+    static boolean storedState = false;
+    static unsigned long previous = 0;
+    static unsigned long current = 0;
+
+    current = millis();
+
+    if(current - previous > 1000)
+    {
+        storedState = false;
+    }
+
+    if(state)
+    {
+        previous = current;
+        storedState = true;
+    }
+
+    return storedState;
 }
 
 static void getData()
 {
-  if(communicationBoardIn.receiveData())
-  {
-    communicationSafety(true);
-    leftMotorSpeed = motor.leftMotorSpeed;
-    rightMotorSpeed = motor.rightMotorSpeed;
-    actuatorSpeed = motor.actuatorSpeed;
-  } 
+    if(communicationBoardIn.receiveData())
+    {
+        communicationSafety(true);
+        leftMotorSpeed = motor.leftMotorSpeed;
+        rightMotorSpeed = motor.rightMotorSpeed;
+        actuatorSpeed = motor.actuatorSpeed;
+    }
 }
 
 void passData()
 {
-  if(!communicationSafety(false))
-  {
-    leftMotorSpeed = 127;
-    rightMotorSpeed = 127;
-    actuatorSpeed = 127;
-  }
+    if(!communicationSafety(false))
+    {
+        leftMotorSpeed = 127;
+        rightMotorSpeed = 127;
+        actuatorSpeed = 127;
+    }
 }
 
 void updateCommunication()
 {
-  getData();
-  passData();
+    getData();
+    passData();
 }
 
 #endif

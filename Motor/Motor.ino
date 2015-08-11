@@ -9,13 +9,13 @@
 
 void setup()
 {
-  initializeCommunication();
-  initializeServos();
+    initializeCommunication();
+    initializeServos();
 }
 
 void loop()
 {
-  updateCommunication();
-  updateServos();
-  updateLed();
+    updateCommunication();
+    updateServos();
+    updateLed();
 }
